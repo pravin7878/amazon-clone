@@ -10,9 +10,6 @@ export const ProductListing = () => {
     const dispatch = useDispatch()
     const products = useSelector((state) => state?.products)
 
-    console.log(products);
-
-
     const catagoies = [
         "beauty",
         "fragrances",
@@ -56,31 +53,23 @@ export const ProductListing = () => {
 
     const { data } = products
 
-    // console.log(data?.fragrances?.products);
-    
     return (<>
         <div
             className='w-[95%] m-auto '
             >
             <h3 className='text-black my-3 font-bold'>Top deal On smartphones</h3>
-            <div className='w-full grid grid-cols-5 gap-4'>
-                {data?.smartphones?.products?.map((product, ind) => {
-                    return <ProductCard key={ind} {...product} />
-                })}
+            <div>
+                <CustomSlider data={data?.smartphones?.products} />
             </div>
           
             <h3 className='text-black my-3 font-bold'>Top deal On motorcycle</h3>
-            <div className='w-full grid grid-cols-5 gap-4'>
-                {data?.motorcycle?.products?.map((product, ind) => {
-                    return <ProductCard key={ind} {...product} />
-                })}
+            <div>
+                <CustomSlider data={data?.motorcycle?.products} />
             </div>
 
             <h3 className='text-black my-3 font-bold'>Top deal On mens-shoes</h3>
-            <div className='w-full grid grid-cols-5 gap-4'>
-                {data["mens-shoes"]?.products?.map((product, ind) => {
-                    return <ProductCard key={ind} {...product} />
-                })}
+            <div>
+                <CustomSlider data={data["mens-shoes"]?.products} />
             </div>
         </div>
 

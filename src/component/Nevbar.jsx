@@ -13,16 +13,20 @@ import { getCategory } from '../redux/slises/catagorySlice';
 
 
 export const Nevbar = () => {
-    const [cartItemCount, setcartItemCount] = useState(0)
+    const [cartItemCount, setcartItemCount] = useState()
     const [searchQuiry, setsearchQuiry] = useState("")
     const dispach = useDispatch()
     const categories = useSelector((state) => state.categories)
 
-    const data = categories.data.slice(0, 13)
+    const data = categories?.data?.slice(0, 13)
+    const cartData = useSelector((state) => state?.cart?.data)
 
     const hendelSerch = () => {
         console.log(searchQuiry);
     }
+    useEffect(() => {
+      setcartItemCount(cartData?.length)
+    }, [cartData])
 
     useEffect(() => {
         dispach(getCategory())
@@ -92,16 +96,18 @@ export const Nevbar = () => {
                     <p>Returns</p>
                     <p className='font-bold text-[13px]'>& Orders</p>
                 </span>
-                <span className='w-[20%] m-auto flex justify-center items-center relative pt-1 cursor-pointer'>
-                    <p className=' text-yellow-400 absolute top-1 left-[43%] font-bold text-md px-1 rounded-md bg-black'>{cartItemCount}</p>
-                    <FaCartPlus size={35} className='pt-1' />
-                </span>
+                <Link className='w-[20%]' to={"/cart"}>
+                    <span className=' m-auto flex justify-center items-center relative pt-1 cursor-pointer'>
+                        <p className=' text-yellow-400 absolute top-1 left-[43%] font-bold text-md px-1 rounded-md bg-black'>{cartItemCount}</p>
+                        <FaCartPlus size={35} className='pt-1' />
+                    </span>
+                </Link>
             </div>
         </div>
         <div className='bg-[#232F3E] flex justify-between px-1 text-white'>
-            {data?.map((catagory,ind)=>{
+            {data?.map((catagory, ind) => {
                 return <span key={ind} className='w-1/14 hover:border-2 hover:border-white cursor-pointer p-1'>{catagory}</span>
-            }) }
+            })}
         </div>
     </>
     )

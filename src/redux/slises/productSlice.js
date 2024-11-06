@@ -12,7 +12,7 @@ const url = "https://dummyjson.com/products/category";
 
 export const getProductByCat = createAsyncThunk("GET_PRODUCTS", async (catagory) => {
   try {
-    const res = await axios.get(`${url}/${catagory}?limit=${5}&skip=${0}`);
+    const res = await axios.get(`${url}/${catagory}?limit=${10}&skip=${0}`);
     return {res : res.data , catagory};
   } catch (error) {
     console.log(error);
@@ -30,7 +30,7 @@ const productSlice = createSlice({
       })
       .addCase(getProductByCat.fulfilled, (state, {payload}) => {
         state.isLoading = false;
-        state.data[payload.catagory] = payload.res
+        state.data[payload?.catagory] = payload.res
       })
       .addCase(getProductByCat.rejected, (state) => {
         state.isLoading = false;

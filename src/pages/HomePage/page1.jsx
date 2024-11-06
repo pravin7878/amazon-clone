@@ -15,7 +15,7 @@ export const Page1 = () => {
       </div>
       
     </div>
-    <div className="w-full bg-[#E3E6E6] h-[1000px] ">
+    <div className="w-full bg-[#E3E6E6] h-[900px] ">
       </div>
   </>
   )

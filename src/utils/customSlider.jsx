@@ -11,13 +11,14 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
+import { ProductCard } from './ProductCard';
 
 export default function CustomSlider({ data }) {
     return (
         <>
             <Swiper
-                slidesPerView={1}
-                spaceBetween={30}
+                slidesPerView={5}
+                spaceBetween={20}
                 loop={true}
                 pagination={{
                     clickable: true,
@@ -26,18 +27,12 @@ export default function CustomSlider({ data }) {
                 modules={[Pagination, Navigation]}
                 className="mySwiper"
             >
-                {/* {data?.map((content, ind) => {
-                    return <SwiperSlide key={ind}>
-                        <img className='w-[100%] h-full' src={content} />
+                {data?.map((content, ind) => {
+                    return <SwiperSlide className='rounded-lg' key={ind}>
+                        <ProductCard {...content}/>
                     </SwiperSlide>
-                })} */}
+                })}
 
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
             </Swiper>
         </>
     );
