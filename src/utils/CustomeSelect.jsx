@@ -25,13 +25,9 @@ const customStyles = {
     }),
 };
 
-const options = [
-    { value: 'all', label: 'All' },
-    { value: 'category', label: 'Category' },
-    { value: 'other', label: 'Other' },
-];
 
-const CustomSelect = () => {
+
+const CustomSelect = (options) => {
     return <Select
         options={options}
         styles={customStyles}

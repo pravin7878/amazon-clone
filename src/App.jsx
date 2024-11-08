@@ -3,6 +3,7 @@ import { Nevbar } from './component/Nevbar'
 import { AllRoutes } from './component/AllRoutes'
 import { ToastContainer } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
+import Footer from './component/Footer';
 
 const App = () => {
   return (<>
@@ -13,6 +14,7 @@ const App = () => {
   <div className='mt-[80px]'>
     <AllRoutes/>
   </div>
+  <Footer/>
   </>
   )
 }

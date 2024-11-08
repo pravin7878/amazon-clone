@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
   isLoading: false,
   isError: false,
+  ErrorMassege : "",
   data: {},
 };
 // const url = "https://dummyjson.com/products";
@@ -18,6 +19,9 @@ export const getProductByCat = createAsyncThunk("GET_PRODUCTS", async (catagory)
     console.log(error);
   }
 });
+
+
+
 
 const productSlice = createSlice({
   name: "products",

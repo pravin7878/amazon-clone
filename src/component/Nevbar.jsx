@@ -7,9 +7,10 @@ import logo from "../assets/amazon_logo.png"
 import logolight from "../assets/amazon_logo-lite.png"
 import CustomSelect from '../utils/CustomeSelect'
 import { FaCartPlus } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategory } from '../redux/slises/catagorySlice';
+import { getSerachResult } from '../redux/slises/searchSllice';
 
 
 export const Nevbar = () => {
@@ -17,15 +18,24 @@ export const Nevbar = () => {
     const [searchQuiry, setsearchQuiry] = useState("")
     const dispach = useDispatch()
     const categories = useSelector((state) => state.categories)
+    const navigate = useNavigate()
 
     const data = categories?.data?.slice(0, 13)
     const cartData = useSelector((state) => state?.cart?.data)
 
+    const options = [
+        { value: 'all', label: 'All' },
+        { value: 'category', label: 'Category' },
+        { value: 'other', label: 'Other' },
+    ];
+
     const hendelSerch = () => {
         console.log(searchQuiry);
+       
+        navigate(`/product/search/${searchQuiry}`)
     }
     useEffect(() => {
-      setcartItemCount(cartData?.length)
+        setcartItemCount(cartData?.length)
     }, [cartData])
 
     useEffect(() => {
@@ -57,7 +67,7 @@ export const Nevbar = () => {
             </div>
             <div className='w-[40%] flex text-black rounded-md  m-auto bg-white'>
                 <span>
-                    <CustomSelect />
+                    <CustomSelect options = {options}/>
                 </span>
                 <input
                     className='w-[80%] px-3 text-xl rounded-none'
@@ -112,3 +122,4 @@ export const Nevbar = () => {
     </>
     )
 }
+

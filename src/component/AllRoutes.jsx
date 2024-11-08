@@ -7,6 +7,7 @@ import { Cart } from '../pages/Cart'
 import CheckoutPage from '../pages/ChackOutPage'
 import PaymentSuccess from '../pages/PaymentSuccess'
 import PaymentFailure from '../pages/PaymentFailed'
+import { SearchResult } from './SearchResult'
 
 export const AllRoutes = () => {
   return (
@@ -19,6 +20,7 @@ export const AllRoutes = () => {
       <Route path='/checkout' element={<CheckoutPage/>}/>
       <Route path='/payment-success' element={<PaymentSuccess/>}/>
       <Route path='/payment-failure' element={<PaymentFailure/>}/>
+      <Route path='/product/search/:quiry' element={<SearchResult/>}/>
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   )
